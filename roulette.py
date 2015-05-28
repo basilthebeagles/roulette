@@ -17,7 +17,7 @@ if password != "basil":
     exit()
 
 
-encryptionManager.manage(0, rootDirectionary)
+encryptionManager.manage(0, rootDirectionary, key)
              
         
 
