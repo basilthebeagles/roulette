@@ -1,9 +1,11 @@
 import time
 import random
 import os, random, struct
+import admin
 from Crypto.Cipher import AES # @UnresolvedImport
 
-
+if not admin.isUserAdmin():
+        admin.runAsAdmin()
 
 
 def encrypt_file(key, in_filename, out_filename, chunksize):
