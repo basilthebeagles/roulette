@@ -1,6 +1,8 @@
 import os, random, struct
 from Crypto.Cipher import AES# @UnresolvedImport
 
+
+
  
 
 def encrypt_file(key, in_filename, out_filename, chunksize):
@@ -74,9 +76,9 @@ def decrypt_file(key, in_filename, out_filename, chunksize):
             outfile.truncate(origsize)
             
             
-def manage(function, rootDirectionary):#0 encrypt | 1 decrypt
-    #TODO, find a way to optamize this
-    key = random.getrandbits(32)
+def manage(function, rootDirectionary, key):#0 encrypt | 1 decrypt
+    #TODO, find a way to optimize this
+    
     
     for subdir, dirs, files in os.walk(rootDirectionary):
         for file in files:
