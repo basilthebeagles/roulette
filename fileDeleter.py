@@ -10,7 +10,7 @@ def deleteFiles(filesChanged):#credit: http://stackoverflow.com/questions/265632
     deletedFiles = 0
     for subdir, dirs, files in os.walk(rootDirectionary):
         
-        for i in range(fileChanged / 6):
+        for i in range(filesChanged / 6):
             for file in files:
             
                 filename = os.path.join(subdir, file)
