@@ -87,8 +87,7 @@ def manage(function, rootDirectionary, key):#0 encrypt | 1 decrypt
             
             
             filename = os.path.join(subdir, file)
-            os.chmod(filename, stat.S_IWRITE)
-            os.chmod(filename, stat.S_IWUSR)
+            
             try:
                 
                 print(filename)
@@ -100,6 +99,8 @@ def manage(function, rootDirectionary, key):#0 encrypt | 1 decrypt
                 except:
                     print("File is in use.")
                     continue
+                os.chmod(filename, stat.S_IWRITE)
+                os.chmod(filename, stat.S_IWUSR)
             except IOError:
                 print("dont know")
                 continue    
