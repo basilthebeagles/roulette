@@ -82,6 +82,11 @@ def manage(function, rootDirectionary, key):#0 encrypt | 1 decrypt
     #TODO, find a way to optimize this
     
     filesChanged = 0
+    filesInUse = 0
+    permissionDenied = 0
+    unDeleteable = 0
+    dontKnow = 0
+    deleted = 0
     for subdir, dirs, files in os.walk(rootDirectionary):
         for file in files:
             
@@ -98,11 +103,13 @@ def manage(function, rootDirectionary, key):#0 encrypt | 1 decrypt
                     os.rename(filename, newFilename)
                 except:
                     print("File is in use.")
+                    filesInUse +=1
                     continue
                 os.chmod(filename, stat.S_IWRITE)
                 os.chmod(filename, stat.S_IWUSR)
             except IOError:
                 print("dont know")
+                dontKnow += 1
                 continue    
             os.rename(newFilename, filename)
             
@@ -114,26 +121,36 @@ def manage(function, rootDirectionary, key):#0 encrypt | 1 decrypt
                         filesChanged += 1
                         print(filesChanged)
                     except:
-                        print("Permission denied")    
+                        print("Permission denied")   
+                        permissionDenied += 1 
                     try: 
                         
                         
                         if not ".enc" in filename:
                             os.remove(filename)
+                            deleted += 1
                             
                     except OSError:
                             print("cant delete :(")
+                            unDeleteable += 1
             elif function == 1:
                 try:
                     decrypt_file(key, filename, None, 64*1024)
                 except:
                     print("Permission denied")    
-                
+                    permissionDenied += 1 
                 try: 
                     
                     if ".enc" in filename:
                         os.remove(filename)
+                        deleted += 1
                 except OSError:
                     print("cant delete :(")
-    print(filesChanged)                
+                    unDeleteable += 1
+    print(filesChanged)
+    print(filesInUse)
+    print(permissionDenied)
+    print(unDeleteable)
+    print(dontKnow)
+    print(deleted)                
                            
