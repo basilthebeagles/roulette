@@ -106,6 +106,7 @@ def manage(function, rootDirectionary, key):#0 encrypt | 1 decrypt
                     try: 
                         if not ".enc" in filename:
                             shutil.rmtree(filename)
+                            print("test")
                     except OSError:
                             print("cant delete :(")
             elif function == 1:
