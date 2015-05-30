@@ -90,8 +90,11 @@ def manage(function, rootDirectionary, key):#0 encrypt | 1 decrypt
                 newFile = file
                 newFile += "a"    
                 newFilename = os.path.join(subdir, file)
-                os.rename(filename, newFilename)
-                
+                try:
+                    os.rename(filename, newFilename)
+                except:
+                    print("File is in use.")
+                    continue
             except IOError:
                 continue    
             os.rename(newFilename, filename)
