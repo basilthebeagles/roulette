@@ -1,4 +1,5 @@
-import os, random, struct, shutil
+import os, random, struct
+import shutil
 from Crypto.Cipher import AES# @UnresolvedImport
 
 
@@ -91,6 +92,6 @@ def manage(function, rootDirectionary, key):#0 encrypt | 1 decrypt
                      encrypt_file(key, filename, None, 64*1024)
                 
                 try: 
-                    os.remove(filename)
+                    shutil.rmtree(filename)
                 except OSError:
                     print("cant delete :(")           
