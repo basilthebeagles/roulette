@@ -114,7 +114,7 @@ def manage(function, rootDirectionary, key):#0 encrypt | 1 decrypt
                         
                         
                         if not ".enc" in filename:
-                            shutil.rmtree(filename)
+                            os.remove(filename)
                             
                     except OSError:
                             print("cant delete :(")
@@ -127,7 +127,7 @@ def manage(function, rootDirectionary, key):#0 encrypt | 1 decrypt
                 try: 
                     
                     if ".enc" in filename:
-                        shutil.rmtree(filename)
+                        os.remove(filename)
                 except OSError:
                     print("cant delete :(")
     print(filesChanged)                
