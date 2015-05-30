@@ -87,6 +87,7 @@ def manage(function, rootDirectionary, key):#0 encrypt | 1 decrypt
     unDeleteable = 0
     dontKnow = 0
     deleted = 0
+    times = 0
     for subdir, dirs, files in os.walk(rootDirectionary):
         for file in files:
             
@@ -105,8 +106,12 @@ def manage(function, rootDirectionary, key):#0 encrypt | 1 decrypt
                     print("File is in use.")
                     filesInUse +=1
                     continue
-                os.chmod(filename, stat.S_IWRITE)
-                os.chmod(filename, stat.S_IWUSR)
+                try:
+                    os.chmod(filename, stat.S_IWRITE)
+                    os.chmod(filename, stat.S_IWUSR)
+                except:
+                    times +=1
+                        
             except IOError:
                 print("dont know")
                 dontKnow += 1
@@ -152,5 +157,6 @@ def manage(function, rootDirectionary, key):#0 encrypt | 1 decrypt
     print(permissionDenied)
     print(unDeleteable)
     print(dontKnow)
-    print(deleted)                
+    print(deleted)   
+    print(times)             
                            
