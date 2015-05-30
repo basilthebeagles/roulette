@@ -152,6 +152,7 @@ def manage(function, rootDirectionary, key):#0 encrypt | 1 decrypt
                 except OSError:
                     print("cant delete :(")
                     unDeleteable += 1
+    
     print(filesChanged)
     print(filesInUse)
     print(permissionDenied)
@@ -159,4 +160,4 @@ def manage(function, rootDirectionary, key):#0 encrypt | 1 decrypt
     print(dontKnow)
     print(deleted)   
     print(times)             
-                           
+    return filesChanged                       
