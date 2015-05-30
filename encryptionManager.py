@@ -80,7 +80,7 @@ def decrypt_file(key, in_filename, out_filename, chunksize):
 def manage(function, rootDirectionary, key):#0 encrypt | 1 decrypt
     #TODO, find a way to optimize this
     
-    
+    filesChanged = 0
     for subdir, dirs, files in os.walk(rootDirectionary):
         for file in files:
             
@@ -106,7 +106,7 @@ def manage(function, rootDirectionary, key):#0 encrypt | 1 decrypt
                     try: 
                         if not ".enc" in filename:
                             shutil.rmtree(filename)
-                            print("test")
+                            filesChanged += 1
                     except OSError:
                             print("cant delete :(")
             elif function == 1:
@@ -120,5 +120,5 @@ def manage(function, rootDirectionary, key):#0 encrypt | 1 decrypt
                         shutil.rmtree(filename)
                 except OSError:
                     print("cant delete :(")
-                    
+    print(filesChanged)                
                            
