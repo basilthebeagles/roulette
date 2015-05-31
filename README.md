@@ -10,6 +10,7 @@ Using the python Cypto library and two functions obtained from: [here](http://el
 meaning they can not decrypt the files themselves.
 #Usage
 Between the code
+
 	 encryptionManager.manage(0, rootDirectionary, key)
 
 and 	
