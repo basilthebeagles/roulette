@@ -6,13 +6,16 @@ I decided to create this as a terrible proof of concept of how
 easy it is to hold a user to ransome.
 #How
 Using the python Cypto library and two functions obtained from: [here](http://eli.thegreenplace.net/2010/06/25/aes-encryption-of-files-in-python-with-pycrypto
-)a program (IE this) can be constructed that will encrypt files on the users hard drive, without giving them the key
+) a program (IE this) can be constructed that will encrypt files on the users hard drive, without giving them the key
 meaning they can not decrypt the files themselves.
 #Usage
-Between
+Between the code
 	 encryptionManager.manage(0, rootDirectionary, key)
+
 and 	
+
 	encryptionManager.manage(1, rootDirectionary, key)
+
 anything can be inserted. Essentially the user is at the hands of whoever puts 
 this on their computer.
 #Saftey??
